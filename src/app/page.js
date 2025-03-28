@@ -43,7 +43,7 @@ export default function Home() {
   const { user, isAuthenticated, loading } = useAuth();
   const router = useRouter();
 
-  // 할 일 목록 불러오기
+  // 할 일 목록 불러오기 ddd
   useEffect(() => {
     if (isAuthenticated) {
       loadTodos();
