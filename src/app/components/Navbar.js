@@ -19,6 +19,12 @@ export default function Navbar() {
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
             <>
+              <Link
+                href="/dashboard"
+                className="text-gray-800 hover:text-gray-600 transition-colors duration-300"
+              >
+                대시보드
+              </Link>
               <span className="text-sm text-gray-600">{user?.email}</span>
               <button
                 onClick={signOut}
