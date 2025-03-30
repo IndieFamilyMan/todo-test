@@ -143,7 +143,7 @@ export default function TodoDashboard() {
         </div>
 
         <div className="md:col-span-2">
-          <table className="w-full text-sm text-left text-gray-500">
+          <table className="w-full text-sm text-left text-gray-500 table-fixed overflow-x-auto">
             <thead className="text-xs text-gray-700 uppercase bg-gray-100">
               <tr>
                 <th className="px-6 py-3">월</th>

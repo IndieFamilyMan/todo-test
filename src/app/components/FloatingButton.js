@@ -18,15 +18,14 @@ const PlusIcon = () => (
 
 export default function FloatingButton({ onClick }) {
   return (
-    <div className="container mx-auto px-0 max-w-md mt-4">
-      <div className="flex justify-end">
-        <button
-          onClick={onClick}
-          className="w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer"
-        >
-          <PlusIcon />
-        </button>
-      </div>
-    </div>
+    <button
+      onClick={onClick}
+      className="fixed bottom-8 right-8 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer z-50"
+      style={{
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+      }}
+    >
+      <PlusIcon />
+    </button>
   );
 }

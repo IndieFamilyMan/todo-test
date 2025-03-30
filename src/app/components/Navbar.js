@@ -1,56 +1,50 @@
 "use client";
 
+import { useAuth } from "@/lib/AuthContext";
 import Link from "next/link";
-import { useAuth } from "../../../lib/AuthContext";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { signOut } = useAuth();
+  const pathname = usePathname();
 
   return (
-    <div className="w-full max-w-md mb-4">
-      <nav className="bg-white px-6 py-4 rounded-xl shadow-lg flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-gray-800 text-2xl font-bold hover:text-gray-600 transition-colors duration-300"
-        >
-          ToDO
-        </Link>
+    <nav className="mb-6">
+      <div>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-center h-16">
+              <Link
+                href="/"
+                className={`text-xl font-bold ${
+                  pathname === "/" ? "text-blue-600" : "text-gray-800"
+                }`}
+              >
+                Todo App
+              </Link>
 
-        <div className="flex items-center space-x-4">
-          {isAuthenticated ? (
-            <>
-              <Link
-                href="/dashboard"
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-300"
-              >
-                대시보드
-              </Link>
-              <span className="text-sm text-gray-600">{user?.email}</span>
-              <button
-                onClick={signOut}
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-300"
-              >
-                로그아웃
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/auth/signin"
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-300"
-              >
-                로그인
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="text-blue-500 hover:text-blue-600 transition-colors duration-300"
-              >
-                회원가입
-              </Link>
-            </>
-          )}
+              <div className="flex items-center space-x-4">
+                <Link
+                  href={pathname === "/dashboard" ? "/" : "/dashboard"}
+                  className={`px-3 py-2 rounded-md ${
+                    pathname === "/dashboard" || pathname === "/"
+                      ? "text-blue-600 font-medium"
+                      : "text-gray-600 hover:text-gray-800"
+                  } transition-colors`}
+                >
+                  {pathname === "/dashboard" ? "메인화면" : "대시보드"}
+                </Link>
+                <button
+                  onClick={signOut}
+                  className="px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                >
+                  로그아웃
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }

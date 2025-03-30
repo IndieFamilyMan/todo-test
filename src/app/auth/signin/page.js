@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "../../../../lib/supabaseClient";
+import { signIn } from "@/lib/supabaseClient";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
